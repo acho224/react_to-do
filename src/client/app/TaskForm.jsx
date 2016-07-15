@@ -27,7 +27,7 @@ export default function TaskForm(props) {
       </div>
       <div className="form-group">
         <label className="sr-only" htmlFor="task_desc">Description</label>
-        <input name="task_name" type="text" className="form-control input-lg" id="task_desc" placeholder="Task Description"/>
+        <input name="task_desc" type="text" className="form-control input-lg" id="task_desc" placeholder="Task Description"/>
       </div>
       <button type="submit" className="btn btn-primary btn-lg">Submit</button>
     </form>

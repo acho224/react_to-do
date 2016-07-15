@@ -19,7 +19,7 @@ module.exports = {
   /* GET TASKS */
 
    getSingleTask(req, res, next){
-    _db.any("SELECT * from tasks where task_id = $1;", [req.params.taskID])
+    _db.one("SELECT * from tasks where task_id = $1;", [req.params.taskID])
       .then(tasks=>{
         res.rows = tasks;
         next()
@@ -42,7 +42,7 @@ module.exports = {
 
   addTask(req, res, next){
     console.log('=====', req.body)
-    _db.any(
+    _db.one(
       `INSERT INTO
       tasks ( task_name,task_desc )
       VALUES ( $1, $2 )
@@ -61,6 +61,8 @@ module.exports = {
 /* PUT /tasks/:taskID */
   updateTask(req, res, next){
     req.body.tID = Number.parseInt(req.params.taskID);
+
+
     req.body.completed = !!req.body.completed;
 
     _db.one(
